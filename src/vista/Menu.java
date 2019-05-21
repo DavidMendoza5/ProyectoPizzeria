@@ -69,7 +69,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        lbLogoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/modelo/imagenes/LOGO_med.png"))); // NOI18N
+        lbLogoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/modelo/imagenes/VueMedium.png"))); // NOI18N
         lbLogoMenu.setText("   ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -102,7 +102,7 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(lbLogoMenu))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btMenuPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(btMenuSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
         );
@@ -111,15 +111,15 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btMenuVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenuVentasActionPerformed
-        
+
     }//GEN-LAST:event_btMenuVentasActionPerformed
 
     private void btMenuProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenuProductosActionPerformed
-        
+
     }//GEN-LAST:event_btMenuProductosActionPerformed
 
     private void btMenuPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenuPagosActionPerformed
-        
+
     }//GEN-LAST:event_btMenuPagosActionPerformed
 
     /**
@@ -129,7 +129,7 @@ public class Menu extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
