@@ -15,7 +15,7 @@ import modelo.Inventario;
 
 /**
  *
- * @author Gema
+ * @author David
  */
 public class FrmAgregarProducto extends javax.swing.JFrame {
 

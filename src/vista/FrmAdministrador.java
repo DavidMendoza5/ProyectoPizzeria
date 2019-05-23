@@ -9,7 +9,7 @@ import java.awt.Color;
 
 /**
  *
- * @author Alberto
+ * @author vicenteyah
  */
 public class FrmAdministrador extends javax.swing.JFrame {
 
@@ -221,7 +221,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_btEliminarClienteActionPerformed
 
     private void btEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarUsuarioActionPerformed
-        this.dispose();
+        this.setVisible(false);
         new FrmEliminarUsuario().setVisible(true);
     }//GEN-LAST:event_btEliminarUsuarioActionPerformed
 

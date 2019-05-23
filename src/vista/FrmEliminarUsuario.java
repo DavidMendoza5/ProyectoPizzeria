@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author FMAT
+ * @author david
  */
 public class FrmEliminarUsuario extends javax.swing.JFrame {
 
@@ -74,18 +74,18 @@ public class FrmEliminarUsuario extends javax.swing.JFrame {
                         .addComponent(lbTitulo)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(66, Short.MAX_VALUE)
+                        .addContainerGap(36, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(160, 160, 160)
+                                .addGap(220, 220, 220)
                                 .addComponent(btAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(lbIdUsuario)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(38, 38, 38)))))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -3,7 +3,7 @@ package modelo;
 
 /**
  *
- * @author Gema
+ * @author David
  */
 public class Pizza {
     private int idPizza;
