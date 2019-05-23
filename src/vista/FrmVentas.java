@@ -23,7 +23,7 @@ import modelo.Pizza;
 
 /**
  *
- * @author Gema
+ * @author David
  */
 public class FrmVentas extends javax.swing.JFrame {
 

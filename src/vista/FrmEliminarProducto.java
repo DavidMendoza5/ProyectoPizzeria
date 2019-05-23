@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Alberto
+ * @author David
  */
 public class FrmEliminarProducto extends javax.swing.JFrame {
 

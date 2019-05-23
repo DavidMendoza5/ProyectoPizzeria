@@ -7,7 +7,7 @@ package modelo;
 
 /**
  *
- * @author Gema
+ * @author David
  */
 public class Ventas implements PorPagar{
     private int idVenta;    //folio

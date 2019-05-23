@@ -15,7 +15,7 @@ import modelo.Cliente;
 
 /**
  *
- * @author FMAT
+ * @author David
  */
 public class FrmAgregarCliente extends javax.swing.JFrame {
 

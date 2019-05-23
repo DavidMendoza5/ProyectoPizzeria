@@ -3,7 +3,7 @@ package modelo;
 
 /**
  *
- * @author Gema
+ * @author David
  */
 public class Usuario extends Persona{
     private int idUsuario;
