@@ -9,7 +9,8 @@ package modelo;
  *
  * @author David
  */
-public class Ventas implements PorPagar{
+public class Ventas implements PorPagar {
+
     private int idVenta;    //folio
     private String fecha;
     private String nomCliente;
@@ -19,8 +20,7 @@ public class Ventas implements PorPagar{
     private String detalles;
 
     public Ventas(int idVenta, String fecha, String nomCliente, String dirCliente,
-            double precioVenta, double IVA, String detalles)
-    {
+            double precioVenta, double IVA, String detalles) {
         this.idVenta = idVenta;
         this.fecha = fecha;
         this.nomCliente = nomCliente;
@@ -29,8 +29,7 @@ public class Ventas implements PorPagar{
         setIVA(IVA);
         this.detalles = detalles;
     }
-    
-    
+
     //Metodos get
     public int getIdVenta() {
         return idVenta;
@@ -59,9 +58,7 @@ public class Ventas implements PorPagar{
     public String getDetalles() {
         return detalles;
     }
-    
-    
-    
+
     //Metodos set
     public void setIdVenta(int idVenta) {
         this.idVenta = idVenta;
@@ -90,30 +87,15 @@ public class Ventas implements PorPagar{
     public void setDetalles(String detalles) {
         this.detalles = detalles;
     }
-    
-    
-    
-    
-    
+
     //Calcula el subtotal de Compra
-    public double subtotal(){
+    public double subtotal() {
         return getPrecioVenta() * getIVA();
     }
-    
-    
-    
+
     //Precio Total de Venta
     @Override
     public double obtenerMontoPago() {
         return getPrecioVenta() + subtotal();
     }
-    
-
-    
-    
-    
-    
-    
-    
-
 }

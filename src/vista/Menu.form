@@ -35,8 +35,8 @@
                           <Component id="btMenuVentas" max="32767" attributes="0"/>
                           <Component id="btMenuProductos" alignment="0" pref="213" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-                      <Component id="lbLogoMenu" min="-2" pref="110" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                      <Component id="lbLogoMenu" min="-2" pref="116" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
