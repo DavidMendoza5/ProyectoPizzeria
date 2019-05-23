@@ -2,7 +2,7 @@ package modelo;
 
 /**
  *
- * @author Gema
+ * @author vicenteyah
  */
 public class Persona {
     private String nombre;

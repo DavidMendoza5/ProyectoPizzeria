@@ -9,7 +9,7 @@ import java.awt.Color;
 
 /**
  *
- * @author Alberto
+ * @author vicenteyah
  */
 public class FrmAdministrador extends javax.swing.JFrame {
 

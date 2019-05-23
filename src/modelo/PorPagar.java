@@ -2,7 +2,7 @@ package modelo;
 
 /**
  *
- * @author Gema
+ * @author David
  */
 public interface PorPagar {
 
