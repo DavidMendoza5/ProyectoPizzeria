@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author FMAT
+ * @author david
  */
 public class FrmEliminarUsuario extends javax.swing.JFrame {
 

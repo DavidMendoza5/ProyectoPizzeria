@@ -31,7 +31,7 @@ public class FrmVentas extends javax.swing.JFrame {
      * Creates new form FrmVentas
      */
     
-    private FrmMonto frmMonto;
+   // private FrmMonto frmMonto;
     public ArrayList ArregloPizza = new ArrayList();
     private double sumaTotal = 0.0;
     
@@ -284,7 +284,7 @@ public class FrmVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_btEliminarPizzaActionPerformed
 
     private void btGananciasllamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGananciasllamaActionPerformed
-        frmMonto.setVisible(true);
+       // frmMonto.setVisible(true);
     }//GEN-LAST:event_btGananciasllamaActionPerformed
 
     private void btAgregarPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarPizzaActionPerformed
