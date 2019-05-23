@@ -7,7 +7,7 @@ package modelo;
 
 /**
  *
- * @author FMAT
+ * @author AngelCan
  */
 public class Inventario implements PorPagar{
     

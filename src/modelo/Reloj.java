@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 
 /**
  *
- * @author Gema
+ * @author David
  */
 public class Reloj extends Thread{
     private JLabel lbReloj;
