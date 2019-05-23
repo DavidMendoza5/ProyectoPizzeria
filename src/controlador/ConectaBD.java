@@ -22,7 +22,7 @@ public class ConectaBD {
             Class.forName("com.mysql.jdbc.Driver");
 
             //Se establece la conexión a la base de datos
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdpizzeria", "root", "David-Master5");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdpizzeria", "root", "Narukefan1!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No se ha podido establecer una conexion con la BD" + e.getMessage());
         }
