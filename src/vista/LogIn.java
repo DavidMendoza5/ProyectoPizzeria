@@ -10,6 +10,9 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
 
 /**
  *
@@ -22,6 +25,22 @@ public class LogIn extends javax.swing.JFrame {
      */
     public LogIn() {
         initComponents();
+    }
+
+    public class progress implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            int n = jProgressBar1.getValue();
+            if (n < 100) {
+                n++;
+                jProgressBar1.setValue(n);
+            } else {
+                timer.stop();
+                JOptionPane.showMessageDialog(null, "load finishied");
+            }
+        }
+
     }
 
     /**
@@ -43,11 +62,17 @@ public class LogIn extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lbLogo = new javax.swing.JLabel();
         pssContrasenia = new javax.swing.JPasswordField();
+        jProgressBar1 = new javax.swing.JProgressBar();
 
         jRadioButton1.setText("jRadioButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         lbLOGIN.setFont(new java.awt.Font("Cambria", 1, 24)); // NOI18N
         lbLOGIN.setForeground(new java.awt.Color(51, 51, 255));
@@ -128,11 +153,14 @@ public class LogIn extends javax.swing.JFrame {
                             .addComponent(pssContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(179, 179, 179)
+                        .addComponent(lbLogo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(196, 196, 196)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbLogo)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(lbLOGIN)))))
+                                .addGap(6, 6, 6)
+                                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbLOGIN))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -144,11 +172,13 @@ public class LogIn extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(19, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lbLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbLOGIN, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbUsuario))
@@ -171,6 +201,7 @@ public class LogIn extends javax.swing.JFrame {
     }//GEN-LAST:event_btLOGINMouseClicked
 
     private void btLOGINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLOGINActionPerformed
+        timer.start();
         String user = txtUsuario.getText();
         user = user.toLowerCase();
         String pass = new String(pssContrasenia.getPassword());
@@ -217,6 +248,11 @@ public class LogIn extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btCancelarActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        timer = new Timer(50, new progress());
+    }//GEN-LAST:event_formWindowOpened
+
     /**
      * @param args the command line arguments
      */
@@ -250,11 +286,12 @@ public class LogIn extends javax.swing.JFrame {
             }
         });
     }
-
+    private Timer timer;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCancelar;
     private javax.swing.JButton btLOGIN;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JLabel lbContrasenia;
     private javax.swing.JLabel lbLOGIN;
