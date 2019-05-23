@@ -56,7 +56,7 @@ public class FrmEliminarUsuario extends javax.swing.JFrame {
 
         lbIdUsuario.setText("ID Usuario:");
 
-        btSalir.setText("regresar");
+        btSalir.setText("Salir");
         btSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSalirActionPerformed(evt);
@@ -126,10 +126,7 @@ public class FrmEliminarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btAceptarActionPerformed
 
     private void btSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalirActionPerformed
-        this.setVisible(false);
-        FrmAdministrador back = new  FrmAdministrador();
-        back.setVisible(true);
-        back.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btSalirActionPerformed
 
     /**
