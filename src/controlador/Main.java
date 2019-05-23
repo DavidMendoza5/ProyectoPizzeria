@@ -8,7 +8,7 @@ import vista.*;
 
 /**
  *
- * @author david
+ * @author David
  */
 public class Main {
 

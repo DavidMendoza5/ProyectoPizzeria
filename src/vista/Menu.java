@@ -7,7 +7,7 @@ package vista;
 
 /**
  *
- * @author Gema
+ * @author angelCan
  */
 public class Menu extends javax.swing.JFrame {
 
@@ -58,6 +58,11 @@ public class Menu extends javax.swing.JFrame {
 
         btMenuSalir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btMenuSalir.setText("Salir");
+        btMenuSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btMenuSalirActionPerformed(evt);
+            }
+        });
 
         btMenuProductos.setBackground(new java.awt.Color(255, 255, 255));
         btMenuProductos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -125,6 +130,11 @@ public class Menu extends javax.swing.JFrame {
     private void btMenuPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenuPagosActionPerformed
 
     }//GEN-LAST:event_btMenuPagosActionPerformed
+
+    private void btMenuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenuSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btMenuSalirActionPerformed
 
     /**
      * @param args the command line arguments

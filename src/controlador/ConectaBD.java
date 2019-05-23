@@ -10,7 +10,7 @@ import javax.swing.*;
 
 /**
  *
- * @author Sony
+ * @author vicenteyah
  */
 public class ConectaBD {
 

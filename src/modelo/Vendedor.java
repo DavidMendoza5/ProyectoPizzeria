@@ -3,7 +3,7 @@ package modelo;
 
 /**
  *
- * @author Gema
+ * @author vicenteyah
  */
 public class Vendedor extends Usuario implements PorPagar{
     private double ventasBrutas;

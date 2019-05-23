@@ -15,7 +15,7 @@ import modelo.Usuario;
 
 /**
  *
- * @author FMAT
+ * @author vicenteyah
  */
 public class FrmAgregarUsuario extends javax.swing.JFrame {
 

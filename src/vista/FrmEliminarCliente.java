@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author FMAT
+ * @author AngelCan
  */
 public class FrmEliminarCliente extends javax.swing.JFrame {
 
