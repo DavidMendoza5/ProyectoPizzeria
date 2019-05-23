@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static java.lang.Thread.sleep;
 import javax.swing.Timer;
 
 /**
@@ -43,6 +44,72 @@ public class LogIn extends javax.swing.JFrame {
 
     }
 
+    public void startLoad() {
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                timer.start();//To change body of generated methods, choose Tools | Templates.
+            }
+        }).start();
+    }
+
+    public void startLogin() {
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                String user = txtUsuario.getText();
+                user = user.toLowerCase();
+                String pass = new String(pssContrasenia.getPassword());
+                String capturaTipo = "";
+
+                ConectaBD cnc = new ConectaBD();
+                Connection cnx = cnc.conectar();
+
+                String sql = " select * FROM usuarios WHERE usuario = '" + user + "' AND contraseña = '" + pass + "' ";
+                try {
+                    Statement instruccion = cnx.createStatement();
+                    ResultSet conjuntoResultados = instruccion.executeQuery(sql);
+
+                    while (conjuntoResultados.next()) {
+                        capturaTipo = conjuntoResultados.getString("Tipo");
+                    }
+
+                    if (capturaTipo.equalsIgnoreCase("Administrador")) {
+                        //this.dispose();
+                       new FrmAdministrador().setVisible(true);
+                       new FrmAdministrador().setLocationRelativeTo(null);
+                    } else {
+                        if (capturaTipo.equalsIgnoreCase("Vendedor")) {
+                            //this.dispose();
+                            new FrmVentas().setVisible(true);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos");
+                        }
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(LogIn.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+        }).start();
+    }
+   
+    public void waitSeconds(){
+        new Thread(new Runnable(){
+            @Override
+            public void run() {
+                try{
+                   sleep(500); 
+                   LogIn lg = new LogIn();
+                   lg.setVisible(false);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -213,39 +280,9 @@ public class LogIn extends javax.swing.JFrame {
     }//GEN-LAST:event_btLOGINMouseClicked
 
     private void btLOGINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLOGINActionPerformed
-        timer.start();
-        String user = txtUsuario.getText();
-        user = user.toLowerCase();
-        String pass = new String(pssContrasenia.getPassword());
-        String capturaTipo = "";
-
-        ConectaBD cnc = new ConectaBD();
-        Connection cnx = cnc.conectar();
-
-        String sql = " select * FROM usuarios WHERE usuario = '" + user + "' AND contraseña = '" + pass + "' ";
-        try {
-            Statement instruccion = cnx.createStatement();
-            ResultSet conjuntoResultados = instruccion.executeQuery(sql);
-
-            while (conjuntoResultados.next()) {
-                capturaTipo = conjuntoResultados.getString("Tipo");
-            }
-
-            if (capturaTipo.equalsIgnoreCase("Administrador")) {
-                this.dispose();
-                new FrmAdministrador().setVisible(true);
-            } else {
-                if (capturaTipo.equalsIgnoreCase("Vendedor")) {
-                    this.dispose();
-                    new FrmVentas().setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos");
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(LogIn.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        startLoad();
+        startLogin();
+        waitSeconds();
     }//GEN-LAST:event_btLOGINActionPerformed
 
     private void pssContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pssContraseniaActionPerformed
@@ -262,7 +299,7 @@ public class LogIn extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        timer = new Timer(50, new progress());
+        timer = new Timer(1, new progress());
     }//GEN-LAST:event_formWindowOpened
 
     /**
