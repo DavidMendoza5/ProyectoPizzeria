@@ -109,9 +109,13 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+   
     private void btMenuVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenuVentasActionPerformed
-
+        this.setVisible(false);
+        FrmVentas fr = new FrmVentas();
+        fr.setVisible(true);
+        fr.setLocationRelativeTo(null);
+         
     }//GEN-LAST:event_btMenuVentasActionPerformed
 
     private void btMenuProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenuProductosActionPerformed
