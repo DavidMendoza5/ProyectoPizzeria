@@ -198,7 +198,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_btAgregarUsuarioActionPerformed
 
     private void btSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalirActionPerformed
-        this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_btSalirActionPerformed
 
     private void btAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarProductoActionPerformed
@@ -207,7 +207,8 @@ public class FrmAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_btAgregarProductoActionPerformed
 
     private void btEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarProductoActionPerformed
-        // TODO add your handling code here:
+       new FrmEliminarProducto().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btEliminarProductoActionPerformed
 
     private void btAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarClienteActionPerformed
