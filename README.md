@@ -4,4 +4,5 @@
 > and import the database too in mysqlWorkbench or xampp mariadb.
 #  To install mysql connector
 > To download mysqlConnector for Unix Sistems [click here](https://dev.mysql.com/downloads/file/?id=485756) 
+> To connnet to database in this project[repo](https://github.com/AngelCan/Controller.git)
 
