@@ -5,7 +5,7 @@
  */
 package vista;
 
-import controlador.ConectaBD;
+
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static java.lang.Thread.sleep;
 import javax.swing.Timer;
+import Control.ConectaBD;
 
 /**
  *

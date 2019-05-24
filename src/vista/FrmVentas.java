@@ -11,7 +11,7 @@ import java.sql.Statement;
 import java.text.DateFormat;
 import java.util.Calendar;
 import modelo.Reloj;
-import controlador.ConectaBD;
+import Control.ConectaBD;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Vector;
