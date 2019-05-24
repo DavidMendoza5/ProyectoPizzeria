@@ -5,7 +5,7 @@
  */
 package vista;
 
-import controlador.ConectaBD;
+import Control.ConectaBD;
 import java.awt.Color;
 import java.sql.*;
 import java.util.logging.Level;
@@ -40,9 +40,9 @@ public class FrmEliminarCliente extends javax.swing.JFrame {
         txtIdCliente = new javax.swing.JTextField();
         btSalir = new javax.swing.JButton();
         btAceptar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(468, 223));
 
         lbTitulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lbTitulo.setForeground(new java.awt.Color(0, 0, 255));
@@ -64,6 +64,13 @@ public class FrmEliminarCliente extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Regresar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -76,7 +83,9 @@ public class FrmEliminarCliente extends javax.swing.JFrame {
                         .addGap(137, 137, 137))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(160, 160, 160)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
                         .addComponent(btAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(63, 63, 63))))
             .addGroup(layout.createSequentialGroup()
@@ -95,10 +104,11 @@ public class FrmEliminarCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addGap(21, 21, 21))
         );
 
@@ -127,6 +137,11 @@ public class FrmEliminarCliente extends javax.swing.JFrame {
             Logger.getLogger(LogIn.class.getName()).log(Level.SEVERE, null, exc);
         }
     }//GEN-LAST:event_btAceptarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new FrmAdministrador().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,6 +181,7 @@ public class FrmEliminarCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAceptar;
     private javax.swing.JButton btSalir;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel lbIdCliente;
     private javax.swing.JLabel lbTitulo;
     private javax.swing.JTextField txtIdCliente;

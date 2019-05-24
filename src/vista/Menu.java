@@ -5,6 +5,10 @@
  */
 package vista;
 
+import com.sun.istack.internal.logging.Logger;
+import static java.lang.Thread.sleep;
+import java.util.logging.Level;
+
 /**
  *
  * @author angelCan
@@ -17,7 +21,7 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,10 +32,9 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         btMenuVentas = new javax.swing.JButton();
-        btMenuPagos = new javax.swing.JButton();
         btMenuSalir = new javax.swing.JButton();
-        btMenuProductos = new javax.swing.JButton();
         lbLogoMenu = new javax.swing.JLabel();
+        jp_progress = new vista.CustomPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 204, 255));
@@ -39,20 +42,10 @@ public class Menu extends javax.swing.JFrame {
         btMenuVentas.setBackground(new java.awt.Color(0, 204, 102));
         btMenuVentas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btMenuVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/modelo/imagenes/Ventas.png"))); // NOI18N
-        btMenuVentas.setText("Venta");
+        btMenuVentas.setText("Ventas");
         btMenuVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btMenuVentasActionPerformed(evt);
-            }
-        });
-
-        btMenuPagos.setBackground(new java.awt.Color(255, 51, 51));
-        btMenuPagos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btMenuPagos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/modelo/imagenes/Ingresos.PNG"))); // NOI18N
-        btMenuPagos.setText("Pagos");
-        btMenuPagos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btMenuPagosActionPerformed(evt);
             }
         });
 
@@ -64,76 +57,94 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        btMenuProductos.setBackground(new java.awt.Color(255, 255, 255));
-        btMenuProductos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btMenuProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/modelo/imagenes/Producto.png"))); // NOI18N
-        btMenuProductos.setText("Productos");
-        btMenuProductos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btMenuProductosActionPerformed(evt);
-            }
-        });
-
         lbLogoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/modelo/imagenes/VueMedium.png"))); // NOI18N
         lbLogoMenu.setText("   ");
+
+        javax.swing.GroupLayout jp_progressLayout = new javax.swing.GroupLayout(jp_progress);
+        jp_progress.setLayout(jp_progressLayout);
+        jp_progressLayout.setHorizontalGroup(
+            jp_progressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 265, Short.MAX_VALUE)
+        );
+        jp_progressLayout.setVerticalGroup(
+            jp_progressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 258, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btMenuPagos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btMenuVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btMenuProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))
-                        .addGap(58, 58, 58)
-                        .addComponent(lbLogoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 18, Short.MAX_VALUE)
+                        .addComponent(jp_progress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(146, 146, 146)
-                        .addComponent(btMenuSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(70, Short.MAX_VALUE))
+                        .addGap(38, 38, 38)
+                        .addComponent(btMenuVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btMenuSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbLogoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(btMenuVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jp_progress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(lbLogoMenu)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btMenuProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbLogoMenu))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btMenuPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(btMenuSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                    .addComponent(btMenuVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btMenuSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btMenuVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenuVentasActionPerformed
-        this.setVisible(false);
-        FrmVentas fr = new FrmVentas();
-        fr.setVisible(true);
-        fr.setLocationRelativeTo(null);
 
+           LoadCom lc= new LoadCom(); 
+            new Thread(new Runnable(){
+
+               @Override
+                public void run() {
+                   for (int num = 1; num <= 100; num++) {
+                        try {
+                            jp_progress.updateProgress(num);
+                            jp_progress.repaint();
+                            Thread.sleep(100);
+                        } catch (InterruptedException ex) {
+                            //  Logger.getLogger(ProgressBarDemo.class.getName()).log(level.SEVERE,null,ex);
+                            ex.printStackTrace();
+                        }    
+                   }
+                }  
+            }).start();
+            
+            lc.start();
+            try{
+               lc.sleep(100); 
+            }catch(InterruptedException et){
+                et.printStackTrace();
+            }
+            //FrmVentas fr = new FrmVentas();
+            //fr.setVisible(true);
+            //fr.setLocationRelativeTo(null);
+            //this.setVisible(false);
     }//GEN-LAST:event_btMenuVentasActionPerformed
-
-    private void btMenuProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenuProductosActionPerformed
-
-    }//GEN-LAST:event_btMenuProductosActionPerformed
-
-    private void btMenuPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenuPagosActionPerformed
-
-    }//GEN-LAST:event_btMenuPagosActionPerformed
 
     private void btMenuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenuSalirActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_btMenuSalirActionPerformed
 
     /**
@@ -172,10 +183,9 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btMenuPagos;
-    private javax.swing.JButton btMenuProductos;
     private javax.swing.JButton btMenuSalir;
     private javax.swing.JButton btMenuVentas;
+    private vista.CustomPanel jp_progress;
     private javax.swing.JLabel lbLogoMenu;
     // End of variables declaration//GEN-END:variables
 }

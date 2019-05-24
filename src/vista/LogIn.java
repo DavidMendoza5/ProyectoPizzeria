@@ -5,14 +5,16 @@
  */
 package vista;
 
-import controlador.ConectaBD;
+
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static java.lang.Thread.sleep;
 import javax.swing.Timer;
+import Control.ConectaBD;
 
 /**
  *
@@ -43,6 +45,72 @@ public class LogIn extends javax.swing.JFrame {
 
     }
 
+    public void startLoad() {
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                timer.start();//To change body of generated methods, choose Tools | Templates.
+            }
+        }).start();
+    }
+
+    public void startLogin() {
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                String user = txtUsuario.getText();
+                user = user.toLowerCase();
+                String pass = new String(pssContrasenia.getPassword());
+                String capturaTipo = "";
+
+                ConectaBD cnc = new ConectaBD();
+                Connection cnx = cnc.conectar();
+
+                String sql = " select * FROM usuarios WHERE usuario = '" + user + "' AND contraseña = '" + pass + "' ";
+                try {
+                    Statement instruccion = cnx.createStatement();
+                    ResultSet conjuntoResultados = instruccion.executeQuery(sql);
+
+                    while (conjuntoResultados.next()) {
+                        capturaTipo = conjuntoResultados.getString("Tipo");
+                    }
+
+                    if (capturaTipo.equalsIgnoreCase("Administrador")) {
+                        //this.dispose();
+                       new FrmAdministrador().setVisible(true);
+                       new FrmAdministrador().setLocationRelativeTo(null);
+                    } else {
+                        if (capturaTipo.equalsIgnoreCase("Vendedor")) {
+                            //this.dispose();
+                            new FrmVentas().setVisible(true);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos");
+                        }
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(LogIn.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+        }).start();
+    }
+   
+    public void waitSeconds(){
+        new Thread(new Runnable(){
+            @Override
+            public void run() {
+                try{
+                   sleep(500); 
+                   LogIn lg = new LogIn();
+                   lg.setVisible(false);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -132,17 +200,6 @@ public class LogIn extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(lbLogo)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(lbLOGIN))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(86, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -152,10 +209,21 @@ public class LogIn extends javax.swing.JFrame {
                             .addComponent(txtUsuario))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btLOGIN, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btLOGIN, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(78, 78, 78)
+                                .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbLogo)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lbLOGIN))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(32, 32, 32)
+                                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addContainerGap(33, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,7 +258,7 @@ public class LogIn extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(2, 2, 2)
                 .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -213,39 +281,9 @@ public class LogIn extends javax.swing.JFrame {
     }//GEN-LAST:event_btLOGINMouseClicked
 
     private void btLOGINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLOGINActionPerformed
-        timer.start();
-        String user = txtUsuario.getText();
-        user = user.toLowerCase();
-        String pass = new String(pssContrasenia.getPassword());
-        String capturaTipo = "";
-
-        ConectaBD cnc = new ConectaBD();
-        Connection cnx = cnc.conectar();
-
-        String sql = " select * FROM usuarios WHERE usuario = '" + user + "' AND contraseña = '" + pass + "' ";
-        try {
-            Statement instruccion = cnx.createStatement();
-            ResultSet conjuntoResultados = instruccion.executeQuery(sql);
-
-            while (conjuntoResultados.next()) {
-                capturaTipo = conjuntoResultados.getString("Tipo");
-            }
-
-            if (capturaTipo.equalsIgnoreCase("Administrador")) {
-                this.dispose();
-                new FrmAdministrador().setVisible(true);
-            } else {
-                if (capturaTipo.equalsIgnoreCase("Vendedor")) {
-                    this.dispose();
-                    new FrmVentas().setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos");
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(LogIn.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        startLoad();
+        startLogin();
+        waitSeconds();
     }//GEN-LAST:event_btLOGINActionPerformed
 
     private void pssContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pssContraseniaActionPerformed
@@ -262,7 +300,7 @@ public class LogIn extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        timer = new Timer(50, new progress());
+        timer = new Timer(1, new progress());
     }//GEN-LAST:event_formWindowOpened
 
     /**
